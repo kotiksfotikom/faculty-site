@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Факультет природничих наук НаУКМА{% endblock %}</title>
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #004c99;
+            --accent: #2b7de9;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        header { background: var(--primary); color: white; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: white; text-decoration: none; }
+        nav a { color: #cbd5e1; text-decoration: none; margin-left: 1.5rem; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: white; }
+        main { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+        .card { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        h1, h2, h3 { color: var(--primary); margin-bottom: 1rem; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        ul { list-style-position: inside; margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="{% url 'index' %}" class="logo">ФПрН НаУКМА</a>
+            <nav>
+                <a href="{% url 'index' %}">Головна</a>
+                <a href="{% url 'department_list' %}">Кафедри</a>
+                <a href="{% url 'program_list' %}">Спеціальності</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
