@@ -11,6 +11,14 @@
                 <p><strong>Мови:</strong> {{ program.languages }}</p>
                 <p><strong>Кількість місць:</strong> {{ program.places }}</p>
                 <p><strong>Дедлайн:</strong> {{ program.deadline|date:"d.m.Y" }}</p>
+                <p>
+                    <strong>Статус:</strong>
+                    {% if program.is_active %}
+                        <span style="color: #16a34a; font-weight: 600;">Прийом триває</span>
+                    {% else %}
+                        <span style="color: #dc2626; font-weight: 600;">Прийом завершено</span>
+                    {% endif %}
+                </p>
                 <p style="margin-top: 1rem; color: var(--text-muted);">{{ program.description }}</p>
             </div>
         {% empty %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Department(models.Model):
@@ -89,3 +90,7 @@ class ExchangeProgram(models.Model):
     class Meta:
         verbose_name = "Програма обміну"
         verbose_name_plural = "Програми обміну"
+
+    @property
+    def is_active(self):
+        return self.deadline >= timezone.now().date()
