@@ -7,7 +7,7 @@
     <div class="grid">
         {% for program in programs %}
             <div class="card">
-                <h2>{{ program.university }}</h2>
+                <h2>{{ program.university }} <span style="font-size: 1rem; color: var(--text-muted);">({{ program.country }})</span></h2>
                 <p><strong>Мови:</strong> {{ program.languages }}</p>
                 <p><strong>Кількість місць:</strong> {{ program.places }}</p>
                 <p><strong>Дедлайн:</strong> {{ program.deadline|date:"d.m.Y" }}</p>
