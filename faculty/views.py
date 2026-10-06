@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from faculty.models import Department, Specialty, HomePageInfo
+from faculty.models import Department, Specialty, HomePageInfo, ExchangeProgram
 
 
 def index(request):
@@ -33,3 +33,8 @@ def department_detail(request, pk):
         pk=pk
     )
     return render(request, 'faculty/department_detail.html', {'department': department})
+
+
+def exchange_list(request):
+    programs = ExchangeProgram.objects.all().order_by('deadline')
+    return render(request, 'faculty/exchange_list.html', {'programs': programs})
