@@ -1,0 +1,37 @@
+{% extends 'faculty/base.html' %}
+
+{% block title %}{{ department.name }} - ФПрН{% endblock %}
+
+{% block content %}
+    <a href="{% url 'department_list' %}" style="display: inline-block; margin-bottom: 1rem;">← До списку кафедр</a>
+    <div class="card">
+        <h1>{{ department.name }}</h1>
+        <p><strong>Завідувач кафедри:</strong> {{ department.head }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Випускові спеціальності</h2>
+        <ul>
+            {% for spec in department.specialties.all %}
+                <li><a href="{% url 'program_detail' spec.pk %}">{{ spec.code }} {{ spec.name }}</a></li>
+            {% empty %}
+                <li style="color: var(--text-muted);">Кафедра наразі не є випусковою для спеціальностей.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Викладацький склад</h2>
+        <div class="grid" style="margin-top: 1rem;">
+            {% for teacher in department.teachers.all %}
+                <div style="border: 1px solid var(--border); border-radius: 6px; padding: 1rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">{{ teacher.full_name }}</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;"><strong>Посада:</strong> {{ teacher.position }}</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;"><strong>Ступінь:</strong> {{ teacher.academic_degree }}</p>
+                </div>
+            {% empty %}
+                <p>Інформація про викладачів відсутня.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'faculty/base.html' %}
+
+{% block title %}Кафедри - ФПрН{% endblock %}
+
+{% block content %}
+    <h1>Кафедри факультету</h1>
+    <div class="grid">
+        {% for dep in departments %}
+            <div class="card">
+                <h2><a href="{% url 'department_detail' dep.pk %}">{{ dep.name }}</a></h2>
+                <p><strong>Завідувач:</strong> {{ dep.head }}</p>
+                <div style="margin-top: 1rem;">
+                    <strong>Випускова для спеціальностей:</strong>
+                    <ul>
+                        {% for spec in dep.specialties.all %}
+                            <li><a href="{% url 'program_detail' spec.pk %}">{{ spec.code }} {{ spec.name }}</a></li>
+                        {% empty %}
+                            <li style="color: var(--text-muted);">Немає прив'язаних спеціальностей</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% empty %}
+            <p>Кафедри ще не додані.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'faculty/base.html' %}
+
+{% block title %}Головна - Факультет природничих наук{% endblock %}
+
+{% block content %}
+    {% if info %}
+        <div class="card">
+            <h1>{{ info.faculty_name }}</h1>
+            <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">{{ info.description }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Про факультет</h2>
+            <p style="white-space: pre-line;">{{ info.general_info }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Контакти деканату</h2>
+            <p style="white-space: pre-line;">{{ info.contacts }}</p>
+        </div>
+    {% else %}
+        <div class="card">
+            <h1>Інформація відсутня</h1>
+            <p>Будь ласка, заповніть інформацію про факультет через <a href="/admin/">панель адміністратора</a>.</p>
+        </div>
+    {% endif %}
+{% endblock %}

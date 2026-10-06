@@ -1,0 +1,23 @@
+{% extends 'faculty/base.html' %}
+
+{% block title %}Спеціальності — ФПрН{% endblock %}
+
+{% block content %}
+    <h1>Спеціальності факультету</h1>
+    <div class="grid">
+        {% for program in programs %}
+            <div class="card">
+                <span class="badge">Код: {{ program.code }}</span>
+                <h2><a href="{% url 'program_detail' program.pk %}">{{ program.name }}</a></h2>
+                <p><strong>Випускова кафедра:</strong> <a href="{% url 'department_detail' program.department.pk %}">{{ program.department.name }}</a></p>
+                <p style="margin: 0.8rem 0;">{{ program.description|truncatewords:50 }}</p>
+                <div style="border-top: 1px solid var(--border); padding-top: 0.8rem; font-size: 0.9rem; color: var(--text-muted);">
+                    <p><strong>Координатор:</strong> {{ program.coordinator_name }}</p>
+                    <p><strong>Контакт:</strong> {{ program.coordinator_contact }}</p>
+                </div>
+            </div>
+        {% empty %}
+            <p>Спеціальності ще не додані.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
