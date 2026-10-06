@@ -76,11 +76,12 @@ class HomePageInfo(models.Model):
 
 
 class ExchangeProgram(models.Model):
-    university = models.CharField(max_length=255, verbose_name="Університет")
-    languages = models.CharField(max_length=255, verbose_name="Мови навчання")
-    places = models.CharField(max_length=50, verbose_name="Кількість місць")
-    deadline = models.DateField(verbose_name="Дедлайн подачі")
-    description = models.TextField(verbose_name="Опис")
+    university = models.CharField("Університет", max_length=255)
+    languages = models.CharField("Мови навчання", max_length=255)
+    places = models.CharField("Кількість місць", max_length=50)
+    deadline = models.DateField("Дедлайн подачі")
+    description = models.TextField("Опис")
+    country = models.CharField("Країна", max_length=100, default="", blank=True)
 
     def __str__(self):
         return self.university
