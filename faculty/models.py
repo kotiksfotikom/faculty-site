@@ -78,7 +78,7 @@ class HomePageInfo(models.Model):
 class ExchangeProgram(models.Model):
     university = models.CharField("Університет", max_length=255)
     languages = models.CharField("Мови навчання", max_length=255)
-    places = models.CharField("Кількість місць", max_length=50)
+    places = models.IntegerField("Кількість місць")
     deadline = models.DateField("Дедлайн подачі")
     description = models.TextField("Опис")
     country = models.CharField("Країна", max_length=100, default="", blank=True)
